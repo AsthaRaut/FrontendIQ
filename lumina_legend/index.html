@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUMINA LEGEND | Premium Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="floating-icon" style="top: 10%; left: 5%;">📜</div>
+    <div class="floating-icon" style="bottom: 10%; right: 5%;">💎</div>
+
+    <div class="app-container">
+        <div id="welcome-screen" class="screen active">
+            <h1 class="gold-text" style="font-size: 4rem;">LUMINA LEGEND</h1>
+            <p style="font-size: 1.5rem; margin: 20px 0 40px; opacity: 0.8;">The Ultimate Engineering Assessment</p>
+            <div style="max-width: 400px; margin: 0 auto;">
+                <input type="text" id="user-name" placeholder="Enter Hero Name">
+                <input type="email" id="user-email" placeholder="Enter Secure Email">
+                <button class="btn btn-gold" onclick="navTo('topic-screen')">Enter Arena</button>
+            </div>
+        </div>
+
+        <div id="topic-screen" class="screen">
+            <h2 class="gold-text">Choose Your Path</h2>
+            <div class="selection-grid">
+                <div class="card" onclick="setTrack('CSS')">
+                    <div style="font-size: 3rem;">🎨</div>
+                    <h3>CSS Mastery</h3>
+                </div>
+                <div class="card" onclick="setTrack('JS')">
+                    <div style="font-size: 3rem;">⚡</div>
+                    <h3>JS Logic</h3>
+                </div>
+                <div class="card" onclick="setTrack('Hybrid')">
+                    <div style="font-size: 3rem;">🌀</div>
+                    <h3>Hybrid Sync</h3>
+                </div>
+            </div>
+        </div>
+
+        <div id="level-screen" class="screen" style="text-align: center;">
+            <h2 class="gold-text">Select Intensity</h2>
+            <div class="selection-grid">
+                <div class="card" onclick="setLevel('Beginner')"><h3>Beginner</h3></div>
+                <div class="card" onclick="setLevel('Intermediate')"><h3>Intermediate</h3></div>
+                <div class="card" onclick="setLevel('Advanced')"><h3>Advanced</h3></div>
+            </div>
+            <button class="btn btn-outline" style="margin-top: 30px;" onclick="navTo('topic-screen')">← Back to Paths</button>
+        </div>
+        
+
+        <div id="instruction-screen" class="screen" style="text-align: center;">
+            <h2 class="gold-text">Arena Rules</h2>
+            <div style="text-align: left; font-size: 1.3rem; line-height: 2; margin: 30px 0;">
+                <p>• 10 Questions total.</p>
+                <p>• 15 Seconds per question - Time is of the essence.</p>
+                <p>• No backtracking permitted.</p>
+                <p>• Score 70%+ to earn the Legend Certificate.</p>
+            </div>
+            <button class="btn btn-gold" onclick="startCountdown()">I Accept</button>
+        </div>
+
+        <div id="countdown-screen" class="screen" style="text-align: center;">
+            <div id="countdown-num">3</div>
+            <p class="legend-font">PREPARE YOURSELF</p>
+        </div>
+
+        <div id="quiz-screen" class="screen">
+            <div class="quiz-header">
+                <div>
+                    <p id="track-info" class="gold-text"></p>
+                    <p id="q-progress"></p>
+                </div>
+                <div class="timer-box" id="timer-display">15</div>
+            </div>
+            <div class="question-text" id="question-text">Loading...</div>
+            <div id="options-container"></div>
+        </div>
+
+        <div id="result-screen" class="screen" style="text-align: center;">
+            <h1 class="gold-text">Assessment Complete</h1>
+            <div style="margin: 40px 0;">
+                <p id="final-grade" style="font-size: 2rem;">Grade: A</p>
+                <p id="final-percent" style="font-size: 4rem; font-weight: 800;">85%</p>
+            </div>
+            <button class="btn btn-gold" onclick="restartArena()">Restart Arena</button>
+            <button class="btn btn-outline" onclick="endTest()">End Test</button>
+        </div>
+    </div>
+
+    <div id="cert-modal" class="modal">
+        <div class="certificate">
+            <h3 style="font-family: 'Cinzel'; font-size: 1.2rem;">LUMINA ACADEMY</h3>
+            <h1 style="font-family: 'Cinzel'; font-size: 3.5rem; margin: 20px 0;">CERTIFICATE</h1>
+            <p>This legendary achievement is awarded to</p>
+            <h2 id="cert-user-name" style="border-bottom: 2px solid #333; display: inline-block; padding: 10px 40px; margin: 20px 0;">USER NAME</h2>
+            <p>For demonstrating exceptional mastery in</p>
+            <p><strong id="cert-track-details">TRACK: LEVEL</strong></p>
+            <div style="margin-top: 40px; display: flex; justify-content: space-around;">
+                <div>
+                    <p id="cert-date">2026</p>
+                    <small>DATE</small>
+                </div>
+                <div>
+                    <p><strong id="cert-score">90%</strong></p>
+                    <small>FINAL SCORE</small>
+                </div>
+            </div>
+            <button class="btn btn-gold" style="margin-top: 40px;" onclick="closeCert()">Claim & Continue</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
